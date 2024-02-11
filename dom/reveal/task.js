@@ -3,17 +3,23 @@
 const reveal = document.querySelectorAll('.reveal');
 
 function isVivible(element) {
-    const {top, bottom} = element.getBoundingClientRect();
+  const {top, bottom} = element.getBoundingClientRect();
 
-    bottom < 0 || top > window.innerHeight
-      ? false
-      : true;
+    if (bottom < 0 || top > window.innerHeight) {
+      return false;
+    } else {
+      return true;
+    }
 }
 
-reveal.forEach((event) => {
-    event
-      ? event.classList.add('reveal_active')
-      : event.classList.remove('reveal_active');
-
-    window.addEventListener('scroll', isVivible);
+window.addEventListener('scroll', () => {
+  reveal.forEach((event) => {
+    
+    if (isVivible(event)) {
+      event.classList.add('reveal_active');
+    } else {
+      event.classList.remove('reveal_active');
+    }
+  })
 });
+
