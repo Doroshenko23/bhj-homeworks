@@ -3,6 +3,7 @@
 const tasksList = document.getElementById('tasks__list');
 const tasksForm = document.getElementById('tasks__form');
 
+
 tasksForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
@@ -21,12 +22,16 @@ tasksForm.addEventListener('submit', (event) => {
   tasksList.insertAdjacentHTML('beforeEnd', task);
   tasksInput.value = '';
 
-  const taskRemove = document.querySelectorAll('.task__remove');
+ const taskRemove = document.querySelectorAll('.task__remove');
+ 
+ const removeButtonArr = Array.from(taskRemove);
+ const removeButtonRemove = removeButtonArr[removeButtonArr.length-1];
 
-  taskRemove.forEach((element) => {
-    element.addEventListener('click', (event) => {
-      event.preventDefault();
-      event.target.closest('.task').remove();
-    });
-  });
+ removeButtonRemove.addEventListener('click', (event) => {
+     event.preventDefault();
+     event.target.closest('.task').remove();
+     });
 });
+
+
+  

@@ -8,8 +8,6 @@ function isVivible(element) {
 
     if (bottom < 0 || top > window.innerHeight) {
       return false;
-    } else {
-      return true;
     }
 }
 
@@ -28,6 +26,11 @@ Array.from(linkElements).forEach((element) => {
   element.addEventListener('click', (e) => {
     e.preventDefault();
 
+    if (tooltip.textContent === element.title) {
+      tooltip.classList.toggle('tooltip_active');
+      return;
+    }
+        
     const {top, left} = element.getBoundingClientRect();
     
     tooltip.textContent = element.title;
@@ -39,3 +42,9 @@ Array.from(linkElements).forEach((element) => {
   });
 });
 
+window.addEventListener ('mouseout', event => {
+  const target = event.target;
+  if (!target.closest('tooltip_active') && !target.closest('.has-tooltip')) {
+    tooltip.classList.remove('tooltip_active');
+  }
+});
