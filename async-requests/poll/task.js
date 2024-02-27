@@ -15,6 +15,7 @@ xhr.onreadystatechange = function() {
         pollTitle.innerHTML = receivedData.data.title;
 
         let receivedDataArray = receivedData.data.answers; 
+        
 
         for (let element in receivedDataArray) { 
             const addingButton = `<button class="poll__answer">${receivedDataArray[element]}</button>`
@@ -24,6 +25,6 @@ xhr.onreadystatechange = function() {
         const button = document.querySelector('.poll__answer');
         button.addEventListener('click', () => {
             alert('Спасибо, ваш голос засчитан!')
-       });
+        });
     };
 }
