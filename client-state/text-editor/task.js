@@ -1,12 +1,11 @@
 'use strict';
 
 const editor = document.getElementById(`editor`);
-let imputText = editor.value;
 
 document.addEventListener(`keyup`, () => {
-  localStorage.setItem(`text`, imputText);
+  localStorage.setItem(`text`, editor.value);
 });
 
 window.addEventListener(`load`, () => {
-  imputText = localStorage.getItem(`text`);
+  editor.value = localStorage.getItem(`text`);
 });
